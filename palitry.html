@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Палитры 2027 · свадьба в Luna Garden</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F5F1; --ink:#262320; --muted:#8B857B; --card:#FFFFFF;
+    --hair:#E6E2DA;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:'Inter',-apple-system,'Segoe UI',sans-serif;
+    padding:28px 16px 40px; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:440px;margin:0 auto;}
+  header{text-align:center;margin-bottom:26px;}
+  .eyebrow{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);}
+  h1{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:34px;font-weight:600;line-height:1.1;margin:8px 0 6px;
+  }
+  .sub{font-size:13px;color:var(--muted);}
+  .card{
+    background:var(--card);border:1px solid var(--hair);border-radius:18px;
+    padding:18px 18px 16px;margin-bottom:16px;
+    box-shadow:0 1px 3px rgba(38,35,32,0.05);
+  }
+  .swatches{display:flex;gap:0;height:88px;margin-bottom:14px;align-items:flex-end;}
+  .chip{
+    flex:1;height:72px;border-radius:8px 8px 3px 3px;position:relative;
+    box-shadow:0 3px 8px rgba(38,35,32,0.14);
+  }
+  .chip + .chip{margin-left:-8px;}
+  .chip:nth-child(1){transform:rotate(-2.5deg);height:66px;z-index:1;}
+  .chip:nth-child(2){transform:rotate(-1deg);height:74px;z-index:2;}
+  .chip:nth-child(3){transform:rotate(0.5deg);height:80px;z-index:3;}
+  .chip:nth-child(4){transform:rotate(1.5deg);height:74px;z-index:2;}
+  .chip:nth-child(5){transform:rotate(3deg);height:66px;z-index:1;}
+  .head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;}
+  .name{font-family:'Cormorant Garamond',Georgia,serif;font-size:23px;font-weight:600;}
+  .num{font-size:11px;letter-spacing:0.16em;color:var(--muted);white-space:nowrap;}
+  .colors{font-size:12px;color:var(--muted);margin:3px 0 9px;}
+  .desc{font-size:13.5px;line-height:1.5;}
+  .meta{display:flex;gap:8px;margin-top:11px;flex-wrap:wrap;}
+  .tag{
+    font-size:11px;font-weight:500;border:1px solid var(--hair);
+    border-radius:20px;padding:4px 11px;color:var(--ink);background:var(--paper);
+  }
+  .note{
+    text-align:center;font-size:12px;color:var(--muted);line-height:1.5;
+    margin-top:22px;padding-top:18px;border-top:1px solid var(--hair);
+  }
+  .note em{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:14px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Luna Garden · июль 2027</div>
+    <h1>Шесть палитр на выбор</h1>
+    <div class="sub">Тренды 2027 года — карточки для быстрого просмотра</div>
+  </header>
+
+  <div class="card">
+    <div class="swatches">
+      <div class="chip" style="background:#C9B7D6"></div>
+      <div class="chip" style="background:#A98FBF"></div>
+      <div class="chip" style="background:#8A9B6E"></div>
+      <div class="chip" style="background:#5C6B4C"></div>
+      <div class="chip" style="background:#F2EDE4"></div>
+    </div>
+    <div class="head"><div class="name">Сторибук</div><div class="num">№ 1 · хит года</div></div>
+    <div class="colors">пыльно-лиловый · лаванда · мох · шалфей · крем</div>
+    <div class="desc">Сказочная романтика «whimsy» — главная эстетика 2027-го, сменившая строгий минимализм. Идеальна для сада и озера; лаванда и лизиантус спокойно переносят июльскую жару.</div>
+    <div class="meta"><span class="tag">☀️ день и вечер</span><span class="tag">нежность</span></div>
+  </div>
+
+  <div class="card">
+    <div class="swatches">
+      <div class="chip" style="background:#5B2A4A"></div>
+      <div class="chip" style="background:#7B3B4B"></div>
+      <div class="chip" style="background:#4A3B5C"></div>
+      <div class="chip" style="background:#6B7245"></div>
+      <div class="chip" style="background:#C89B5A"></div>
+    </div>
+    <div class="head"><div class="name">Ягодный вечер</div><div class="num">№ 2 · драма</div></div>
+    <div class="colors">слива · мерло · инжир · олива · янтарь</div>
+    <div class="desc">Бархат, тяжёлые ткани, янтарные свечи — роскошь европейского поместья. Раскрывается на закате и ночью, поэтому подходит свадьбе с вечерним банкетом.</div>
+    <div class="meta"><span class="tag">🌙 лучше вечером</span><span class="tag">статус</span></div>
+  </div>
+
+  <div class="card">
+    <div class="swatches">
+      <div class="chip" style="background:#D8C7E8"></div>
+      <div class="chip" style="background:#B9A3D6"></div>
+      <div class="chip" style="background:#E9DFF2"></div>
+      <div class="chip" style="background:#FDFCFA"></div>
+      <div class="chip" style="background:#DCE5D2"></div>
+    </div>
+    <div class="head"><div class="name">Июльская сирень</div><div class="num">№ 3 · лёгкость</div></div>
+    <div class="colors">сирень · лаванда · глициния · белый · светлая зелень</div>
+    <div class="desc">Воздушная версия фиолетовой волны — самого быстрорастущего цветового запроса сезона. Дневная церемония у воды, лёгкий текстиль, белая мебель.</div>
+    <div class="meta"><span class="tag">☀️ лучше днём</span><span class="tag">свежесть</span></div>
+  </div>
+
+  <div class="card">
+    <div class="swatches">
+      <div class="chip" style="background:#FBF7EF"></div>
+      <div class="chip" style="background:#F1E6D4"></div>
+      <div class="chip" style="background:#E3D3BC"></div>
+      <div class="chip" style="background:#CBB79B"></div>
+      <div class="chip" style="background:#B7BCC1"></div>
+    </div>
+    <div class="head"><div class="name">Старосветский нейтральный</div><div class="num">№ 4 · вне времени</div></div>
+    <div class="colors">айвори · крем · шампань · беж · серебро</div>
+    <div class="desc">Слоистые нейтральные, а глубину дают фактуры: кружево, вышивка, свечи. Легко масштабируется на 200+ гостей и дружит с национальными элементами — белым войлоком и серебром.</div>
+    <div class="meta"><span class="tag">☀️🌙 универсальна</span><span class="tag">элегантность</span></div>
+  </div>
+
+  <div class="card">
+    <div class="swatches">
+      <div class="chip" style="background:#F6E3A1"></div>
+      <div class="chip" style="background:#FBF3D5"></div>
+      <div class="chip" style="background:#C8D8A8"></div>
+      <div class="chip" style="background:#A9C48E"></div>
+      <div class="chip" style="background:#C96A6A"></div>
+    </div>
+    <div class="head"><div class="name">Солнечный сад</div><div class="num">№ 5 · смелая ставка</div></div>
+    <div class="colors">сливочно-жёлтый · фисташка · ягодный акцент</div>
+    <div class="desc">Радость вместо торжественности: лимонадные станции, газонные игры, максимально «июльское» настроение. Жёлтый капризен в текстиле — нужен сильный декоратор.</div>
+    <div class="meta"><span class="tag">☀️ лучше днём</span><span class="tag">игра</span></div>
+  </div>
+
+  <div class="card">
+    <div class="swatches">
+      <div class="chip" style="background:#FDFDFD"></div>
+      <div class="chip" style="background:#E8EAEE"></div>
+      <div class="chip" style="background:#C6CBD4"></div>
+      <div class="chip" style="background:#9AA2AF"></div>
+      <div class="chip" style="background:#6E7683"></div>
+    </div>
+    <div class="head"><div class="name">Лунный сад</div><div class="num">№ 6 · под площадку</div></div>
+    <div class="colors">белый · жемчуг · серебро · хром · графит</div>
+    <div class="desc">Серебро вместо золота — металл 2027 года. Готовая концепция «Luna»: отражения в озере и бассейне, вечер при свечах. Название площадки становится неймингом свадьбы.</div>
+    <div class="meta"><span class="tag">🌙 лучше вечером</span><span class="tag">магия</span></div>
+  </div>
+
+  <div class="note">
+    <em>Уходящие тренды, которые не советую:</em><br>
+    кобальтовый синий · шартрез с бургунди · перегруженный винтаж
+  </div>
+</div>
+</body>
+</html>

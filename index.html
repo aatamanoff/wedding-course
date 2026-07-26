@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Курс · Организация свадеб</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F5F1; --ink:#262320; --muted:#8B857B; --card:#FFFFFF; --hair:#E6E2DA;
+    --accent:#5C6B4C; --accent-soft:#EDF0E6; --lav:#A98FBF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:'Inter',-apple-system,'Segoe UI',sans-serif;
+    padding:24px 14px 48px; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:440px;margin:0 auto;}
+  header{text-align:center;margin-bottom:18px;}
+  .eyebrow{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);}
+  h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:32px;font-weight:600;line-height:1.12;margin:8px 0 4px;}
+  .sub{font-size:13px;color:var(--muted);line-height:1.45;}
+
+  .progress-card{
+    background:var(--card);border:1px solid var(--hair);border-radius:16px;
+    padding:14px 16px;margin-bottom:14px;box-shadow:0 1px 3px rgba(38,35,32,0.05);
+  }
+  .progress-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+  .progress-label{font-size:12.5px;font-weight:600;}
+  .progress-pct{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:600;color:var(--accent);}
+  .bar{height:8px;background:var(--hair);border-radius:6px;overflow:hidden;}
+  .fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),#8A9B6E);border-radius:6px;transition:width .4s ease;}
+  .save-note{font-size:10.5px;color:var(--muted);margin-top:7px;}
+
+  .project{
+    background:linear-gradient(135deg,#EFE9F5,#EDF0E6);
+    border:1px solid var(--hair);border-radius:16px;padding:13px 16px;margin-bottom:18px;
+  }
+  .project b{font-size:13px;}
+  .project div{font-size:12px;color:#5a544b;margin-top:3px;line-height:1.45;}
+
+  .week{
+    background:var(--card);border:1px solid var(--hair);border-radius:16px;
+    margin-bottom:12px;overflow:hidden;box-shadow:0 1px 3px rgba(38,35,32,0.05);
+  }
+  .week-head{
+    display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;
+    -webkit-tap-highlight-color:transparent;user-select:none;
+  }
+  .wnum{
+    font-family:'Cormorant Garamond',Georgia,serif;font-size:21px;font-weight:600;
+    width:40px;height:40px;border-radius:12px;background:var(--accent-soft);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .3s,color .3s;
+  }
+  .week.done .wnum{background:var(--accent);color:#fff;}
+  .wtitle{flex:1;}
+  .wtitle b{font-size:14.5px;display:block;line-height:1.3;}
+  .wtitle span{font-size:11.5px;color:var(--muted);}
+  .chev{color:var(--muted);font-size:13px;transition:transform .25s;flex-shrink:0;}
+  .week.open .chev{transform:rotate(180deg);}
+  .week-body{display:none;padding:2px 16px 16px;border-top:1px solid var(--hair);}
+  .week.open .week-body{display:block;}
+  .goal{
+    font-size:12.5px;line-height:1.5;color:#5a544b;background:var(--paper);
+    border-radius:10px;padding:9px 12px;margin:12px 0;
+  }
+  .goal b{color:var(--ink);}
+  .topic{
+    display:flex;align-items:flex-start;gap:11px;padding:9px 2px;cursor:pointer;
+    -webkit-tap-highlight-color:transparent;user-select:none;
+  }
+  .topic + .topic{border-top:1px dashed var(--hair);}
+  .box{
+    width:21px;height:21px;border-radius:7px;border:1.5px solid #C9C3B8;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;margin-top:1px;
+    transition:background .2s,border-color .2s;font-size:12px;color:#fff;
+  }
+  .topic.checked .box{background:var(--accent);border-color:var(--accent);}
+  .topic-text{font-size:13.5px;line-height:1.45;}
+  .topic.checked .topic-text{color:var(--muted);text-decoration:line-through;text-decoration-color:#C9C3B8;}
+  .practice{
+    margin-top:13px;border-radius:12px;background:#F5F1EA;border:1px solid #E8E0D0;
+    padding:11px 13px;
+  }
+  .practice-label{font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#8A7A5E;margin-bottom:4px;font-weight:600;}
+  .practice-text{font-size:13px;line-height:1.5;}
+  footer{text-align:center;font-size:11.5px;color:var(--muted);margin-top:22px;line-height:1.6;}
+  .reset{
+    display:block;margin:14px auto 0;background:none;border:1px solid var(--hair);border-radius:20px;
+    padding:7px 18px;font-size:12px;color:var(--muted);font-family:inherit;cursor:pointer;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Курс · 8 недель</div>
+    <h1>Организация свадеб</h1>
+    <div class="sub">Программа для Маргариты · практика на реальном проекте<br>~6–8 часов в неделю</div>
+  </header>
+
+  <div class="progress-card">
+    <div class="progress-top">
+      <div class="progress-label">Прогресс курса</div>
+      <div class="progress-pct" id="pct">0%</div>
+    </div>
+    <div class="bar"><div class="fill" id="fill"></div></div>
+    <div class="save-note" id="saveNote">Отметки сохраняются автоматически</div>
+  </div>
+
+  <div class="project">
+    <b>🌿 Сквозной учебный проект</b>
+    <div>Свадьба друзей · Luna Garden, Кой-Таш · июль 2027. Каждая неделя завершается реальным шагом подготовки этой свадьбы.</div>
+  </div>
+
+  <div id="weeks"></div>
+
+  <button class="reset" id="resetBtn">Сбросить прогресс</button>
+
+  <footer>
+    Источники курса: программы Moscow Wedding School, SWS, Crystal Wedding ·<br>
+    Lovegevity CWEP, ABC, Penn Foster (перевод) · материалы по традициям КР
+  </footer>
+</div>
+
+<script>
+const WEEKS = [
+  {
+    n:1, title:"Профессия и рынок", tag:"старт · роли · Бишкек",
+    goal:"<b>Цель:</b> понять роль организатора и увидеть рынок Кыргызстана. Опыт салона — уже половина картины.",
+    topics:[
+      "Роли: организатор, координатор, декоратор, салон — зоны ответственности",
+      "Полный цикл свадебного проекта: от первой встречи до закрытия",
+      "Рынок Бишкека: форматы, сезонность, бюджеты, типы площадок",
+      "Этика: конфиденциальность, комиссии подрядчиков, честная смета"
+    ],
+    practice:"Карта рынка: 10 площадок и 15 подрядчиков Бишкека с ценами + первичное интервью с парой друзей."
+  },
+  {
+    n:2, title:"Клиент и психология", tag:"бриф · две семьи · конфликты",
+    goal:"<b>Цель:</b> выявлять реальные потребности и управлять отношениями пары и двух семей.",
+    topics:[
+      "Бриф: вопросы, скрытые ожидания, кто на самом деле принимает решения",
+      "Психология пары: стресс подготовки, усталость от решений",
+      "Две семьи в КР: роли сторон, места для стороны невесты, статус старших",
+      "Конфликтология: типовые конфликты и техники медиации",
+      "Коммуникация и границы: отчёты, каналы, «невеста пишет в 2 ночи»"
+    ],
+    practice:"Полный бриф свадьбы друзей по шаблону + карта заинтересованных сторон (пара и обе семьи)."
+  },
+  {
+    n:3, title:"Кыргызская свадьба", tag:"традиции · нике · регионы",
+    goal:"<b>Цель:</b> свободно ориентироваться в национальном цикле и грамотно встраивать его в проект.",
+    topics:[
+      "Цикл: сойко салуу → кыз узатуу → нике → ЗАГС → чон той → обряды после",
+      "Нике: как проходит, что готовить, взаимодействие с молдо",
+      "Региональные различия: север/юг, Баткен, Ош — что уточнять у семей",
+      "Сэп, кийит, корундук, калың: как корректно вести в смете и переговорах",
+      "Гибридные форматы: европейская церемония + национальные обряды"
+    ],
+    practice:"Схема свадебного цикла для пары друзей: какие обряды, порядок, кто из семей за что отвечает + вопросы старшим."
+  },
+  {
+    n:4, title:"Планирование проекта", tag:"смета · тайминг · ИИ",
+    goal:"<b>Цель:</b> освоить главные инструменты организатора — от концепции до дорожной карты.",
+    topics:[
+      "Концепция и мудборд: от брифа к идее (Pinterest как рабочий инструмент)",
+      "Смета в сомах: структура статей, «забытые» расходы, резерв 10–15%",
+      "Дорожная карта 12–18 месяцев: что бронируется первым",
+      "Чек-листы: мастер-лист подготовки и листы по блокам",
+      "ИИ-инструменты организатора: тексты, сметы, тайминги, идеи",
+      "Список гостей 200+ и рассадка: столы по родственным группам"
+    ],
+    practice:"Концепция + полная смета + дорожная карта свадьбы друзей. Палитру выбираем по лукбуку 2027."
+  },
+  {
+    n:5, title:"Подрядчики и площадки", tag:"переговоры · ТЗ · Luna Garden",
+    goal:"<b>Цель:</b> подбирать, проверять и контролировать исполнителей — письменно и без сюрпризов.",
+    topics:[
+      "Карта подрядчиков: от тамады и декора до контент-мейкера",
+      "Проверка: портфолио, отзывы, личная встреча, красные флаги",
+      "Договорённости в КР: что фиксировать письменно, предоплаты, отмены",
+      "Работа с рестораном: меню на гостя, дегустация, схема зала, персонал",
+      "Осмотр площадки: чек-лист выезда (свет, электрика, план дождя, время)",
+      "ТЗ для каждого подрядчика: структура и примеры"
+    ],
+    practice:"Шорт-листы по категориям + переговоры с Luna Garden (время окончания, монтаж, продление!) + 3 готовых ТЗ."
+  },
+  {
+    n:6, title:"Стиль, декор и тренды", tag:"палитры 2027 · зоны · образы",
+    goal:"<b>Цель:</b> перевести опыт салона в компетенцию организатора и закрыть пробелы по декору.",
+    topics:[
+      "Тренды 2026 → прогноз 2027 → как проверять тренды самостоятельно",
+      "Палитра и её раскладка по зонам: церемония, столы, welcome, бассейн",
+      "Свет как главный инструмент: гирлянды, лампы, свечи",
+      "Флористика на языке заказчика: ставить задачу и проверять смету",
+      "Образы пары и мам — сильный блок Маргариты + прогноз моды 2027",
+      "Полиграфия и тактильные детали: меню, рассадка, навигация"
+    ],
+    practice:"Декор-план Luna Garden по зонам (схема + ТЗ декоратору) + консультация пары по образам."
+  },
+  {
+    n:7, title:"День свадьбы", tag:"тайминг · команда · форс-мажоры",
+    goal:"<b>Цель:</b> уверенно управлять свадебным днём — от сборов до последнего гостя.",
+    topics:[
+      "Поминутный тайминг: несколько локаций, буферы, «деконструированный» день",
+      "Обряды в тайминге: координация со старшими без слома программы",
+      "Команда дня: помощники, зоны, связь",
+      "Контроль площадки: монтаж, звук, подача блюд, подрядчики",
+      "Форс-мажоры: протоколы на 6 типовых ЧП + аварийный чемоданчик",
+      "Завершение: демонтаж, расчёты, передача подарков"
+    ],
+    practice:"Полный тайминг дня свадьбы друзей + план Б по трём главным рискам + список команды."
+  },
+  {
+    n:8, title:"Финал и вход в профессию", tag:"портфолио · цены · план",
+    goal:"<b>Цель:</b> закрыть учебный проект и превратить его в старт карьеры.",
+    topics:[
+      "После свадьбы: расчёты, материалы от фото/видео, отзыв, разбор ошибок",
+      "Портфолио: как упаковать первую свадьбу в кейс",
+      "Ценообразование: форматы услуг и ставки для рынка Бишкека",
+      "Продвижение: Instagram, сарафан, партнёрство с салонами",
+      "Юридика КР: патент/ИП, базовый договор, расписки",
+      "План на 6–12 месяцев: стажировки, координации, цели"
+    ],
+    practice:"Кейс свадьбы друзей для портфолио + личный план развития на 6 месяцев."
+  }
+];
+
+let checked = {};
+let storageOk = false;
+const KEY = "wedding-course-progress";
+
+function totalTopics(){ return WEEKS.reduce((s,w)=>s+w.topics.length,0); }
+
+function render(){
+  const root = document.getElementById("weeks");
+  root.innerHTML = "";
+  WEEKS.forEach(w=>{
+    const el = document.createElement("div");
+    el.className = "week";
+    el.id = "week-"+w.n;
+    const topicsHtml = w.topics.map((t,i)=>{
+      const id = w.n+"-"+i;
+      const on = checked[id] ? " checked" : "";
+      return `<div class="topic${on}" data-id="${id}">
+        <div class="box">${checked[id]?"✓":""}</div>
+        <div class="topic-text">${t}</div></div>`;
+    }).join("");
+    el.innerHTML = `
+      <div class="week-head">
+        <div class="wnum">${w.n}</div>
+        <div class="wtitle"><b>${w.title}</b><span>${w.tag} · <span class="wdone" id="wdone-${w.n}"></span></span></div>
+        <div class="chev">▼</div>
+      </div>
+      <div class="week-body">
+        <div class="goal">${w.goal}</div>
+        ${topicsHtml}
+        <div class="practice">
+          <div class="practice-label">Практика недели</div>
+          <div class="practice-text">${w.practice}</div>
+        </div>
+      </div>`;
+    root.appendChild(el);
+  });
+
+  document.querySelectorAll(".week-head").forEach(h=>{
+    h.addEventListener("click",()=>h.parentElement.classList.toggle("open"));
+  });
+  document.querySelectorAll(".topic").forEach(t=>{
+    t.addEventListener("click",()=>{
+      const id = t.dataset.id;
+      checked[id] = !checked[id];
+      if(!checked[id]) delete checked[id];
+      t.classList.toggle("checked");
+      t.querySelector(".box").textContent = checked[id] ? "✓" : "";
+      update(); save();
+    });
+  });
+  update();
+}
+
+function update(){
+  const total = totalTopics();
+  const done = Object.keys(checked).length;
+  const pct = total ? Math.round(done/total*100) : 0;
+  document.getElementById("pct").textContent = pct+"%";
+  document.getElementById("fill").style.width = pct+"%";
+  WEEKS.forEach(w=>{
+    const d = w.topics.filter((_,i)=>checked[w.n+"-"+i]).length;
+    const lbl = document.getElementById("wdone-"+w.n);
+    if(lbl) lbl.textContent = d+"/"+w.topics.length;
+    const el = document.getElementById("week-"+w.n);
+    if(el) el.classList.toggle("done", d===w.topics.length);
+  });
+}
+
+async function save(){
+  if(storageOk){
+    try{ await window.storage.set(KEY, JSON.stringify(checked)); return; }
+    catch(e){ console.error("save failed", e); }
+  }
+  try{ localStorage.setItem(KEY, JSON.stringify(checked)); }catch(e){}
+}
+
+async function load(){
+  try{
+    if(window.storage && window.storage.get){
+      storageOk = true;
+      try{
+        const r = await window.storage.get(KEY);
+        if(r && r.value) checked = JSON.parse(r.value) || {};
+      }catch(e){ /* ключа ещё нет — это нормально */ }
+    }
+  }catch(e){ storageOk = false; }
+  if(!storageOk){
+    try{
+      const raw = localStorage.getItem(KEY);
+      if(raw) checked = JSON.parse(raw) || {};
+    }catch(e){
+      document.getElementById("saveNote").textContent = "Отметки хранятся в рамках текущей сессии";
+    }
+  }
+  render();
+}
+
+document.getElementById("resetBtn").addEventListener("click", async ()=>{
+  checked = {};
+  if(storageOk){ try{ await window.storage.delete(KEY); }catch(e){} }
+  try{ localStorage.removeItem(KEY); }catch(e){}
+  render();
+});
+
+load();
+</script>
+</body>
+</html>
