@@ -87,6 +87,10 @@
   .practice-label{font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#8A7A5E;margin-bottom:4px;font-weight:600;}
   .practice-text{font-size:13px;line-height:1.5;}
   footer{text-align:center;font-size:11.5px;color:var(--muted);margin-top:22px;line-height:1.6;}
+  .lesson-link{
+    display:block;text-align:center;margin:12px 0;padding:11px;border-radius:12px;
+    background:var(--accent);color:#fff;text-decoration:none;font-size:13.5px;font-weight:500;
+  }
   .reset{
     display:block;margin:14px auto 0;background:none;border:1px solid var(--hair);border-radius:20px;
     padding:7px 18px;font-size:12px;color:var(--muted);font-family:inherit;cursor:pointer;
@@ -257,6 +261,7 @@ function render(){
       </div>
       <div class="week-body">
         <div class="goal">${w.goal}</div>
+        <a class="lesson-link" href="week${w.n}.html">📖 Открыть урок недели ${w.n} →</a>
         ${topicsHtml}
         <div class="practice">
           <div class="practice-label">Практика недели</div>
